@@ -109,13 +109,3 @@ resource "aws_route_table_association" "os-config-public-subnet-asso" {
   subnet_id      = element(aws_subnet.os-config-public_subnets[*].id, count.index)
   route_table_id = aws_route_table.os-config-rt-1.id
 }
-
-
-// LAMBDA FUNCTIONS
-resource "aws_lambda_function" "os-config-lamba-1" {
-  function_name = "os_config_initialise"
-  runtime       = "python3.10"
-  role          = aws_iam_role.os-config-lambda.arn
-  filename = "../test_lambda/lambda_function_payload.zip"
-  handler = "initial_lambda.handler"
-}
