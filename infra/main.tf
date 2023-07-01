@@ -117,5 +117,5 @@ resource "aws_lambda_function" "os-config-lamba-1" {
   runtime       = "python3.10"
   role          = aws_iam_role.os-config-lambda.arn
   filename = "../test_lambda/lambda_function_payload.zip"
-  handler = "test.handler"
+  handler = "initial_lambda.handler"
 }
